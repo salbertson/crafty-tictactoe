@@ -1,9 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Tic Tac Toe</title>
+
+    <script type="text/javascript" src="lib/jquery/jquery.js"></script>
+    <script type="text/javascript" src="lib/underscore/underscore.js"></script>
+    <script type="text/javascript" src="tictactoe/game.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="tictactoe/stylesheet.css">
   </head>
   <body>
-    Comming soon.
+
+    <table id="board">
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+    <script type="text/javascript">
+      var game = new Game($('#board'));
+    </script>
+
   </body>
 </html>
