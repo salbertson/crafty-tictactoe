@@ -19,10 +19,10 @@ describe('Game', function() {
         board.find('td').first().click();
       });
 
-      it('places y marker on board', function() {
+      it('places o marker on board', function() {
         var cell = board.find('td').eq(3);
         cell.click();
-        expect(cell).toHaveText('y');
+        expect(cell).toHaveText('o');
       });
     });
   });

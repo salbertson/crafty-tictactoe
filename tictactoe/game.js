@@ -3,7 +3,7 @@ Game = function(boardElement) {
   $(boardElement).click($.proxy(this.cellClicked, this));
 };
 
-Game.players = ['x', 'y'];
+Game.players = ['x', 'o'];
 
 Game.prototype.cellClicked = function(event) {
   var columnElement = event.target;
