@@ -1,11 +1,22 @@
 Game = function(boardElement) {
-  $(boardElement).click($.proxy(function(event) {
-    var columnElement = event.target;
-    var rowElement = columnElement.parentElement;
+  this.roundsPlayed = 0;
+  $(boardElement).click($.proxy(this.cellClicked, this));
+};
 
-    var columnIndex = _.indexOf(rowElement.children, columnElement);
-    var rowIndex = _.indexOf(rowElement.parentElement.children, rowElement);
+Game.players = ['x', 'y'];
 
-    $(columnElement).html('x');
-  }, this));
+Game.prototype.cellClicked = function(event) {
+  var columnElement = event.target;
+  var rowElement = columnElement.parentElement;
+
+  var columnIndex = _.indexOf(rowElement.children, columnElement);
+  var rowIndex = _.indexOf(rowElement.parentElement.children, rowElement);
+
+  $(columnElement).html(this.currentPlayer());
+
+  this.roundsPlayed++;
+};
+
+Game.prototype.currentPlayer = function() {
+  return Game.players[this.roundsPlayed % 2];
 };
