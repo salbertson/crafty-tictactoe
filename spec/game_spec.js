@@ -4,7 +4,8 @@ describe('Game', function() {
   beforeEach(function() {
     loadFixtures('board.html');
     board = $('#board');
-    game = new Game(board);
+    game = new Game();
+    game.play(board);
   });
 
   describe('board cell is clicked', function() {
