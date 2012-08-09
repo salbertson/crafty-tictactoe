@@ -27,4 +27,18 @@ describe('Game', function() {
       });
     });
   });
+
+  describe('board is covered', function() {
+    beforeEach(function() {
+      spyOn(window, 'alert');
+
+      _.times(9, function(cellIndex) {
+        board.find('td').eq(cellIndex).click();
+      });
+    });
+
+    it('alerts players that game is over', function() {
+      expect(window.alert).toHaveBeenCalled();
+    });
+  });
 });
