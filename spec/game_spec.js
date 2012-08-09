@@ -5,7 +5,7 @@ describe('Game', function() {
     loadFixtures('board.html');
     board = $('#board');
     game = new Game();
-    game.play(board);
+    game.play();
   });
 
   describe('board cell is clicked', function() {
