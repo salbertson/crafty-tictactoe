@@ -11,20 +11,8 @@ describe('Board', function() {
         expect(board.covered()).toBe(false);
       });
     });
-  });
 
-  describe('#placeMarker', function() {
-    describe('in one cell', function() {
-      beforeEach(function() {
-        board.placeMarker('x', 0, 0);
-      });
-
-      it('does not cover the board', function() {
-        expect(board.covered()).toBe(false);
-      });
-    });
-
-    describe('in every cell', function() {
+    describe('with covered board', function() {
       beforeEach(function() {
         _.times(3, function(row) {
           _.times(3, function(column) {
@@ -33,7 +21,7 @@ describe('Board', function() {
         });
       });
 
-      it('covers the board', function() {
+      it('returns true', function() {
         expect(board.covered()).toBe(true);
       });
     });

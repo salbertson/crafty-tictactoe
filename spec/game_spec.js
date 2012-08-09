@@ -14,7 +14,7 @@ describe('Game', function() {
       expect(cell).toHaveText('x');
     });
 
-    describe('when a board cell has already been clicked', function() {
+    describe('then clicked again', function() {
       beforeEach(function() {
         board.find('td').first().click();
       });
