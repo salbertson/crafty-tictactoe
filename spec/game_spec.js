@@ -3,9 +3,13 @@ describe('Game', function() {
 
   beforeEach(function() {
     loadFixtures('board.html');
-    board = $('#board');
     game = new Game();
     game.play();
+    board = $('#board');
+  });
+
+  afterEach(function() {
+    board.remove();
   });
 
   describe('board cell is clicked', function() {

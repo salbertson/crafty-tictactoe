@@ -1,10 +1,15 @@
 describe('Board', function() {
-  var board;
+  var board, element;
 
   beforeEach(function() {
     loadFixtures('board.html');
     board = new Board();
-    board.initialize();
+    board.render(document.body);
+    element = $('#board');
+  });
+
+  afterEach(function() {
+    element.remove();
   });
 
   describe('#covered', function() {
@@ -32,7 +37,7 @@ describe('Board', function() {
   describe('#placeMarker', function() {
     it('displays marker in cell', function() {
       board.placeMarker('x', 0, 1);
-      expect($('#board td').eq(1)).toHaveText('x');
+      expect(element.find('td').eq(1)).toHaveText('x');
     });
   });
 
@@ -46,7 +51,7 @@ describe('Board', function() {
       });
 
       it('publishes cell selection', function() {
-        $('#board td').eq(1).click();
+        element.find('td').eq(1).click();
         expect(cellSelectedCallback).toHaveBeenCalledWith(0, 1);
       });
     });
