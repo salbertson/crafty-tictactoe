@@ -39,6 +39,17 @@ describe('Board', function() {
       board.placeMarker('x', 0, 1);
       expect(element.find('td').eq(1)).toHaveText('x');
     });
+
+    it('returns true', function() {
+      expect(board.placeMarker('x', 0, 1)).toBe(true);
+    });
+
+    describe('twice for the same cell', function() {
+      it('returns false', function() {
+        board.placeMarker('x', 0, 1);
+        expect(board.placeMarker('x', 0, 1)).toBe(false);
+      });
+    });
   });
 
   describe('#clickCell', function() {
