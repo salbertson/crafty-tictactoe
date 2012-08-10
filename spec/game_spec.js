@@ -19,16 +19,10 @@ describe('Game', function() {
       expect(cell).toHaveText('x');
     });
 
-    describe('then clicked again', function() {
-      beforeEach(function() {
-        board.find('td').first().click();
-      });
-
-      it('places o marker on board', function() {
-        var cell = board.find('td').eq(3);
-        cell.click();
-        expect(cell).toHaveText('o');
-      });
+    it('places x marker on board', function() {
+      var cell = board.find('td').first();
+      cell.click();
+      expect(board.find('td').eq(1)).toHaveText('o');
     });
   });
 
