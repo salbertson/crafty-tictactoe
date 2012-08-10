@@ -39,4 +39,18 @@ describe('Opponent', function() {
       });
     });
   });
+
+  describe('#blockFork', function() {
+    beforeEach(function() {
+      board.placeMarker('x', 0, 1);
+      board.placeMarker('x', 1, 2);
+      spyOn(board, 'clickCell');
+    });
+
+    it('opponent blocks fork', function() {
+      opponent.board = board;
+      opponent.blockFork();
+      expect(board.clickCell).toHaveBeenCalledWith(0, 2);
+    });
+  });
 });
