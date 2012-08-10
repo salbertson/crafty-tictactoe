@@ -5,7 +5,7 @@ describe('Opponent', function() {
     loadFixtures('board.html');
     board = new Board();
     board.render(document.body);
-    opponent = new Opponent();
+    opponent = new Opponent('o');
   });
 
   afterEach(function() {
