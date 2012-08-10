@@ -41,6 +41,26 @@ describe('Board', function() {
     });
   });
 
+  describe('#clickCell', function() {
+    var cell, clickTriggered;
+
+    beforeEach(function() {
+      clickTriggered = false;
+      cell = element.find('tr').eq(0).find('td').eq(2);
+      cell.click(function() {
+        clickTriggered = true;
+      });
+    });
+
+    it('clicks cell for given row and column', function() {
+      board.clickCell(0, 2);
+
+      waitsFor(function() {
+        return clickTriggered;
+      }, 'cell element to be clicked');
+    });
+  });
+
   describe('cell selected event', function() {
     describe('with subscription to cell selection', function() {
       var cellSelectedCallback;
