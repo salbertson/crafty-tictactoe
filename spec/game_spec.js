@@ -22,7 +22,7 @@ describe('Game', function() {
     it('places x marker on board', function() {
       var cell = board.find('td').first();
       cell.click();
-      expect(board.find('td').eq(1)).toHaveText('o');
+      expect(board.find('td').eq(4)).toHaveText('o');
     });
   });
 

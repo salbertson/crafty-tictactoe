@@ -14,13 +14,29 @@ describe('Opponent', function() {
 
   describe('#play', function() {
     beforeEach(function() {
-      board.placeMarker('x', 0, 0);
       spyOn(board, 'clickCell');
     });
 
-    it('clicks first available cell', function() {
-      opponent.play(board);
-      expect(board.clickCell).toHaveBeenCalledWith(0, 1);
+    describe('when x plays edge', function() {
+      beforeEach(function() {
+        board.placeMarker('x', 1, 0);
+      });
+
+      it('opponent plays center', function() {
+        opponent.play(board);
+        expect(board.clickCell).toHaveBeenCalledWith(1, 1);
+      });
+    });
+
+    describe('when x plays center', function() {
+      beforeEach(function() {
+        board.placeMarker('x', 1, 1);
+      });
+
+      it('opponent plays corner', function() {
+        opponent.play(board);
+        expect(board.clickCell).toHaveBeenCalledWith(0, 0);
+      });
     });
   });
 });
