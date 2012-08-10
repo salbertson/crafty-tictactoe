@@ -26,30 +26,25 @@ describe('Game', function() {
     });
 
     describe('and same cell is clicked again', function() {
-      beforeEach(function() {
-        spyOn(window, 'alert');
-      });
-
-      it('alerts player', function() {
+      it('does not start new turn', function() {
         var cell = board.find('td').first();
         cell.click();
+
+        spyOn(game, 'startNewTurn');
         cell.click();
-        expect(window.alert).toHaveBeenCalled();
+        expect(game.startNewTurn).not.toHaveBeenCalled();
       });
     });
   });
 
   describe('board is covered', function() {
     beforeEach(function() {
-      spyOn(window, 'alert');
-
       _.times(9, function(cellIndex) {
         board.find('td').eq(cellIndex).click();
       });
     });
 
-    it('alerts players that game is over', function() {
-      expect(window.alert).toHaveBeenCalled();
+    xit('tells players that game is over', function() {
     });
   });
 });
