@@ -43,8 +43,5 @@ describe('Game', function() {
         board.find('td').eq(cellIndex).click();
       });
     });
-
-    xit('tells players that game is over', function() {
-    });
   });
 });
