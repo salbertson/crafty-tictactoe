@@ -54,20 +54,5 @@ describe('Opponent', function() {
         expect(board.clickCell).toHaveBeenCalledWith(0, 2);
       });
     });
-
-    describe('with fork corner taken', function() {
-      beforeEach(function() {
-        board.placeMarker('x', 0, 1);
-        board.placeMarker('x', 0, 2);
-        board.placeMarker('x', 1, 2);
-        spyOn(board, 'clickCell');
-      });
-
-      it('opponent cannot block and should not click', function() {
-        opponent.board = board;
-        opponent.blockFork();
-        expect(board.clickCell).not.toHaveBeenCalledWith(0, 2);
-      });
-    });
   });
 });
