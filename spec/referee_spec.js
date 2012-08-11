@@ -3,8 +3,8 @@ describe('Referee', function() {
 
   beforeEach(function() {
     loadFixtures('board.html');
-    referee = new Referee();
     board = new Board();
+    referee = new Referee(board);
   });
 
   describe('#checkWin', function() {
@@ -16,7 +16,7 @@ describe('Referee', function() {
       });
 
       it('return true', function() {
-        expect(referee.checkWin('x', board)).toBe(true);
+        expect(referee.checkWin('x')).toBe(true);
       });
     });
 
@@ -28,7 +28,7 @@ describe('Referee', function() {
       });
 
       it('return false', function() {
-        expect(referee.checkWin('x', board)).toBe(false);
+        expect(referee.checkWin('x')).toBe(false);
       });
     });
   });
