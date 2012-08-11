@@ -1,15 +1,8 @@
 describe('Board', function() {
-  var board, element;
+  var board;
 
   beforeEach(function() {
-    loadFixtures('board.html');
     board = new Board();
-    board.render(document.body);
-    element = $('#board');
-  });
-
-  afterEach(function() {
-    element.remove();
   });
 
   describe('#covered', function() {
@@ -37,7 +30,7 @@ describe('Board', function() {
   describe('#placeMarker', function() {
     it('displays marker in cell', function() {
       board.placeMarker('x', 0, 1);
-      expect(element.find('td').eq(1)).toHaveText('x');
+      expect(board.data[0][1]).toBe('x');
     });
 
     it('returns true', function() {
@@ -48,42 +41,6 @@ describe('Board', function() {
       it('returns false', function() {
         board.placeMarker('x', 0, 1);
         expect(board.placeMarker('x', 0, 1)).toBe(false);
-      });
-    });
-  });
-
-  describe('#clickCell', function() {
-    var cell, clickTriggered;
-
-    beforeEach(function() {
-      clickTriggered = false;
-      cell = element.find('tr').eq(0).find('td').eq(2);
-      cell.click(function() {
-        clickTriggered = true;
-      });
-    });
-
-    it('clicks cell for given row and column', function() {
-      board.clickCell(0, 2);
-
-      waitsFor(function() {
-        return clickTriggered;
-      }, 'cell element to be clicked');
-    });
-  });
-
-  describe('cell selected event', function() {
-    describe('with subscription to cell selection', function() {
-      var cellSelectedCallback;
-
-      beforeEach(function() {
-        cellSelectedCallback = jasmine.createSpy();
-        board.subscribeToCellSelection(cellSelectedCallback);
-      });
-
-      it('publishes cell selection', function() {
-        element.find('td').eq(1).click();
-        expect(cellSelectedCallback).toHaveBeenCalledWith(0, 1);
       });
     });
   });

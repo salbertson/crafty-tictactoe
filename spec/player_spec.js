@@ -4,8 +4,7 @@ describe('Player', function() {
   beforeEach(function() {
     loadFixtures('board.html');
     board = new Board();
-    board.render(document.body);
-    player = new Player('o');
+    player = new Player('o', board, $('#board'));
   });
 
   afterEach(function() {
@@ -14,7 +13,7 @@ describe('Player', function() {
 
   describe('#play', function() {
     beforeEach(function() {
-      spyOn(board, 'clickCell');
+      spyOn(player, 'clickCell');
     });
 
     describe('when x plays edge', function() {
@@ -24,7 +23,7 @@ describe('Player', function() {
 
       it('player plays center', function() {
         player.play(board);
-        expect(board.clickCell).toHaveBeenCalledWith(1, 1);
+        expect(player.clickCell).toHaveBeenCalledWith(1, 1);
       });
     });
 
@@ -35,7 +34,7 @@ describe('Player', function() {
 
       it('player plays corner', function() {
         player.play(board);
-        expect(board.clickCell).toHaveBeenCalledWith(0, 0);
+        expect(player.clickCell).toHaveBeenCalledWith(0, 0);
       });
     });
   });
@@ -45,13 +44,13 @@ describe('Player', function() {
       beforeEach(function() {
         board.placeMarker('x', 0, 1);
         board.placeMarker('x', 1, 2);
-        spyOn(board, 'clickCell');
+        spyOn(player, 'clickCell');
       });
 
       it('player blocks fork', function() {
         player.board = board;
         player.blockFork();
-        expect(board.clickCell).toHaveBeenCalledWith(0, 2);
+        expect(player.clickCell).toHaveBeenCalledWith(0, 2);
       });
     });
   });

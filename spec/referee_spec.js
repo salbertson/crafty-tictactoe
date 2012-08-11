@@ -1,16 +1,10 @@
 describe('Referee', function() {
-  var referee, board, element;
+  var referee, board;
 
   beforeEach(function() {
     loadFixtures('board.html');
     referee = new Referee();
     board = new Board();
-    board.render(document.body);
-    element = $('#board');
-  });
-
-  afterEach(function() {
-    element.remove();
   });
 
   describe('#checkWin', function() {
