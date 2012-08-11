@@ -15,12 +15,12 @@ describe('Player', function() {
       beforeEach(function() {
         board.placeMarker('x', 0, 1);
         board.placeMarker('x', 1, 2);
-        spyOn(player, 'clickCell');
+        spyOn(player, 'clickIndex');
       });
 
       it('player blocks fork', function() {
         player.blockFork('x');
-        expect(player.clickCell).toHaveBeenCalledWith(0, 2);
+        expect(player.clickIndex).toHaveBeenCalledWith(2);
       });
     });
   });
